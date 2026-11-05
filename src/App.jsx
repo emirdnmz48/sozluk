@@ -1,0 +1,47 @@
+import { useState, useEffect } from 'react';
+
+function App() {
+  // 1. Sayfa açıldığında LocalStorage'da kayıtlı kelime var mı diye bakıyoruz
+  const [kelimeler, setKelimeler] = useState(() => {
+    const kayitliKelimeler = localStorage.getItem('tarihselKelimeler');
+    return kayitliKelimeler ? JSON.parse(kayitliKelimeler) : [];
+  });
+  const [yeniKelime, setYeniKelime] = useState('');
+
+  // 2. Kelimeler listesi her değiştiğinde bunu LocalStorage'a güncelliyoruz
+  useEffect(() => {
+    localStorage.setItem('tarihselKelimeler', JSON.stringify(kelimeler));
+  }, [kelimeler]);
+
+  const kelimeEkle = () => {
+    if (yeniKelime !== '') {
+      setKelimeler([...kelimeler, yeniKelime]);
+      setYeniKelime('');
+    }
+  };
+
+  return (
+    <div style={{ padding: '50px', fontFamily: 'sans-serif' }}>
+      <h1>Tarihsel Kelimeler Sözlüğü</h1>
+      <input 
+        type="text" 
+        value={yeniKelime} 
+        onChange={(e) => setYeniKelime(e.target.value)} 
+        placeholder="Örn: İaşe, Seferberlik"
+        style={{ padding: '10px', fontSize: '16px' }}
+      />
+      <button onClick={kelimeEkle} style={{ padding: '10px', marginLeft: '10px' }}>
+        Sözlüğe Ekle
+      </button>
+      <ul>
+        {kelimeler.map((kelime, index) => (
+          <li key={index} style={{ margin: '10px 0', fontSize: '18px' }}>
+            {kelime}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
