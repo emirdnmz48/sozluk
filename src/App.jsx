@@ -19,20 +19,19 @@ function App() {
   };
 
   return (
-    // Arka plan dokusu ve tarihi fontun eklendiği ana çerçeve
     <div style={{ 
       minHeight: '100vh',
       padding: '40px 20px', 
       fontFamily: '"Georgia", "Times New Roman", serif', 
-      backgroundColor: '#f4ebd8', // Eski kağıt rengi
-      backgroundImage: 'url("https://www.transparenttextures.com/patterns/old-wall.png")', // Hafif yıpranmış doku
-      color: '#3e2723' // Koyu kahverengi mürekkep rengi
+      backgroundColor: '#f4ebd8', 
+      backgroundImage: 'url("https://www.transparenttextures.com/patterns/old-wall.png")', 
+      color: '#3e2723' 
     }}>
       
       <div style={{
         maxWidth: '600px',
         margin: '0 auto',
-        backgroundColor: 'rgba(255, 255, 255, 0.4)', // Yazıların okunması için hafif arka plan
+        backgroundColor: 'rgba(255, 255, 255, 0.4)', 
         padding: '30px',
         borderRadius: '8px',
         boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
@@ -52,9 +51,10 @@ function App() {
               flex: 1, 
               padding: '12px', 
               fontSize: '16px', 
-              border: '1px solid #bcaaa4',
+              border: '1px solid #4e342e',
               borderRadius: '4px',
-              backgroundColor: '#fffdf9',
+              backgroundColor: '#1c1c1c', /* Arka planı siyah yaptık */
+              color: '#ffffff', /* Yazı rengini beyaz yaptık */
               fontFamily: '"Georgia", serif'
             }}
           />
@@ -80,7 +80,8 @@ function App() {
               backgroundColor: '#efebe3', 
               borderLeft: '4px solid #8d6e63',
               fontSize: '18px',
-              borderRadius: '3px'
+              borderRadius: '3px',
+              color: '#3e2723' /* Eklenen kelimelerin rengini koyu kahvede sabitledik */
             }}>
               🖋️ {kelime}
             </li>
